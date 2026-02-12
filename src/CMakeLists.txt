@@ -64,12 +64,12 @@ if(NOT TARGET libcef_lib)
         INTERFACE_LINK_LIBRARIES ""
     )
 endif()
-set_target_properties(libcef_lib
-  PROPERTIES
-  IMPORTED_LOCATION "${CEF_LIB_RELEASE}"
-  IMPORTED_LOCATION_DEBUG "${CEF_LIB_DEBUG}"
-  IMPORTED_LOCATION_RELEASE "${CEF_LIB_RELEASE}"
-)
+#set_target_properties(libcef_lib
+#  PROPERTIES
+#  IMPORTED_LOCATION "${CEF_LIB_RELEASE}"
+#  IMPORTED_LOCATION_DEBUG "${CEF_LIB_DEBUG}"
+#  IMPORTED_LOCATION_RELEASE "${CEF_LIB_RELEASE}"
+#)
 
 if(OS_WINDOWS)
   SET_LIBRARY_TARGET_PROPERTIES(CefViewCore)
@@ -100,12 +100,12 @@ if(OS_LINUX)
 
   add_dependencies(CefViewCore
     libcef_lib
-    libcef_dll_wrapper
+    #libcef_dll_wrapper
   )
 
   set(CefViewCore_LIBS
     libcef_lib
-    libcef_dll_wrapper
+    #libcef_dll_wrapper
     ${CEF_STANDARD_LIBS}
   )
 
