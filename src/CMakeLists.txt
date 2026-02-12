@@ -61,12 +61,12 @@ if(OS_WINDOWS)
 
   add_dependencies(CefViewCore
     libcef_lib
-    #libcef_dll_wrapper
+    libcef_dll_wrapper
   )
 
   set(CefViewCore_LIBS
     libcef_lib
-    #libcef_dll_wrapper
+    libcef_dll_wrapper
     ${CEF_STANDARD_LIBS}
   )
 
@@ -85,12 +85,12 @@ if(OS_LINUX)
 
   add_dependencies(CefViewCore
     libcef_lib
-    #libcef_dll_wrapper
+    libcef_dll_wrapper
   )
 
   set(CefViewCore_LIBS
     libcef_lib
-    #libcef_dll_wrapper
+    libcef_dll_wrapper
     ${CEF_STANDARD_LIBS}
   )
 
@@ -127,11 +127,11 @@ if(OS_MACOS)
   )
 
   add_dependencies(CefViewCore
-	  #libcef_dll_wrapper
+    libcef_dll_wrapper
   )
 
   set(CefViewCore_LIBS
-	  #libcef_dll_wrapper
+    libcef_dll_wrapper
     ${CEF_STANDARD_LIBS}
   )
 
@@ -220,7 +220,7 @@ if(OS_WINDOWS)
 
   add_dependencies(CefViewWing
     libcef_lib
-    #libcef_dll_wrapper
+    libcef_dll_wrapper
   )
 
   set(_helper_libs
@@ -230,7 +230,7 @@ if(OS_WINDOWS)
     opengl32.lib
 
     libcef_lib
-    #libcef_dll_wrapper
+    libcef_dll_wrapper
     ${CEF_STANDARD_LIBS}
     ${CEF_SANDBOX_STANDARD_LIBS}
   )
@@ -320,12 +320,12 @@ if(OS_LINUX)
 
   add_dependencies(CefViewWing
     libcef_lib
-    #libcef_dll_wrapper
+    libcef_dll_wrapper
   )
 
   set(_helper_libs
     libcef_lib
-    #libcef_dll_wrapper
+    libcef_dll_wrapper
     ${CEF_STANDARD_LIBS}
   )
 
@@ -369,7 +369,7 @@ if(OS_MACOS)
   )
 
   set(CefViewWing_LIBS
-	  #libcef_dll_wrapper
+    libcef_dll_wrapper
     ${CEF_STANDARD_LIBS}
   )
 
@@ -419,7 +419,7 @@ if(OS_MACOS)
     )
 
     add_dependencies(${_helper_target}
-	    #libcef_dll_wrapper
+      libcef_dll_wrapper
     )
 
     target_link_libraries(${_helper_target}
