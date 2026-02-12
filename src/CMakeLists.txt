@@ -60,6 +60,8 @@ if(NOT TARGET libcef_lib)
     add_library(libcef_lib SHARED IMPORTED)
     set_target_properties(libcef_lib PROPERTIES
         IMPORTED_LOCATION "${LIBCEF_SO_PATH}"
+	IMPORTED_LOCATION_RELEASE "${LIBCEF_SO_PATH}"   # Release
+        IMPORTED_LOCATION_DEBUG "${LIBCEF_SO_PATH}"     # Debug（即使相同）
         INTERFACE_INCLUDE_DIRECTORIES "/home/hyj/cef-wps-loongarch64/include"
         INTERFACE_LINK_LIBRARIES ""
     )
