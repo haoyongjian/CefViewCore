@@ -49,12 +49,18 @@ target_include_directories(CefViewCore
 # "${CEF_LIB_RELEASE}"
 # )
 #add_library(libcef_lib ${CEF_LIBTYPE} IMPORTED GLOBAL)
-# Use CEF::cef from CEFConfig.cmake instead of redefining libcef_lib
 if(NOT TARGET libcef_lib)
     if(TARGET CEF::cef)
-        add_library(libcef_lib ALIAS CEF::cef)
+        # Reuse the location from CEF::cef
+        get_target_property(CEF_LIB_PATH CEF::cef IMPORTED_LOCATION)
+        add_library(libcef_lib SHARED IMPORTED)
+        set_target_properties(libcef_lib PROPERTIES
+            IMPORTED_LOCATION "${CEF_LIB_PATH}"
+            INTERFACE_INCLUDE_DIRECTORIES "${CEF_INCLUDE_DIRS}"
+            INTERFACE_LINK_LIBRARIES "${CEF_STANDARD_LIBS}"
+        )
     else()
-        message(FATAL_ERROR "Neither libcef_lib nor CEF::cef is available")
+        message(FATAL_ERROR "CEF::cef target not found. Please check your CEF_ROOT and CEFConfig.cmake")
     endif()
 endif()
 set_target_properties(libcef_lib
@@ -89,7 +95,7 @@ if(OS_WINDOWS)
 endif() # OS_WINDOWS
 
 if(OS_LINUX)
-  SET_LIBRARY_TARGET_PROPERTIES(CefViewCore)
+	#SET_LIBRARY_TARGET_PROPERTIES(CefViewCore)
 
   add_dependencies(CefViewCore
     libcef_lib
@@ -310,7 +316,7 @@ if(OS_LINUX)
     ${CefViewWing_PLATFORM_SRC_FILES}
   )
 
-  SET_EXECUTABLE_TARGET_PROPERTIES(CefViewWing)
+  #SET_EXECUTABLE_TARGET_PROPERTIES(CefViewWing)
 
   set_target_properties(CefViewWing
     PROPERTIES
@@ -360,7 +366,7 @@ if(OS_LINUX)
     "$<TARGET_FILE_DIR:CefViewWing>"
   )
 
-  SET_LINUX_SUID_PERMISSIONS(CefViewWing "$<TARGET_FILE_DIR:CefViewWing>/chrome-sandbox")
+  #SET_LINUX_SUID_PERMISSIONS(CefViewWing "$<TARGET_FILE_DIR:CefViewWing>/chrome-sandbox")
 endif() # OS_LINUX
 
 if(OS_MACOS)
