@@ -48,7 +48,15 @@ target_include_directories(CefViewCore
 # "${CEF_LIB_DEBUG}"
 # "${CEF_LIB_RELEASE}"
 # )
-add_library(libcef_lib ${CEF_LIBTYPE} IMPORTED GLOBAL)
+#add_library(libcef_lib ${CEF_LIBTYPE} IMPORTED GLOBAL)
+# Use CEF::cef from CEFConfig.cmake instead of redefining libcef_lib
+if(NOT TARGET libcef_lib)
+    if(TARGET CEF::cef)
+        add_library(libcef_lib ALIAS CEF::cef)
+    else()
+        message(FATAL_ERROR "Neither libcef_lib nor CEF::cef is available")
+    endif()
+endif()
 set_target_properties(libcef_lib
   PROPERTIES
   IMPORTED_LOCATION "${CEF_LIB_RELEASE}"
