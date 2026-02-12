@@ -12,6 +12,7 @@
 #pragma region stl_headers
 #include <string>
 #include <type_traits>
+#include <functional>
 #pragma endregion
 
 #pragma region cef_headers
