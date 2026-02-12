@@ -50,18 +50,19 @@ target_include_directories(CefViewCore
 # )
 #add_library(libcef_lib ${CEF_LIBTYPE} IMPORTED GLOBAL)
 if(NOT TARGET libcef_lib)
-    if(TARGET CEF::cef)
-        # Reuse the location from CEF::cef
-        get_target_property(CEF_LIB_PATH CEF::cef IMPORTED_LOCATION)
-        add_library(libcef_lib SHARED IMPORTED)
-        set_target_properties(libcef_lib PROPERTIES
-            IMPORTED_LOCATION "${CEF_LIB_PATH}"
-            INTERFACE_INCLUDE_DIRECTORIES "${CEF_INCLUDE_DIRS}"
-            INTERFACE_LINK_LIBRARIES "${CEF_STANDARD_LIBS}"
-        )
-    else()
-        message(FATAL_ERROR "CEF::cef target not found. Please check your CEF_ROOT and CEFConfig.cmake")
+    # Manually specify libcef.so path for LoongArch
+    set(LIBCEF_SO_PATH "/home/hyj/cef-wps-loongarch64/libcef.so")
+
+    if(NOT EXISTS "${LIBCEF_SO_PATH}")
+        message(FATAL_ERROR "libcef.so not found at ${LIBCEF_SO_PATH}")
     endif()
+
+    add_library(libcef_lib SHARED IMPORTED)
+    set_target_properties(libcef_lib PROPERTIES
+        IMPORTED_LOCATION "${LIBCEF_SO_PATH}"
+        INTERFACE_INCLUDE_DIRECTORIES "/home/hyj/cef-wps-loongarch64/include"
+        INTERFACE_LINK_LIBRARIES ""
+    )
 endif()
 set_target_properties(libcef_lib
   PROPERTIES
