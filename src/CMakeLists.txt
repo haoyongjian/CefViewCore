@@ -335,12 +335,12 @@ if(OS_LINUX)
 
   add_dependencies(CefViewWing
     libcef_lib
-    libcef_dll_wrapper
+    #libcef_dll_wrapper
   )
 
   set(_helper_libs
     libcef_lib
-    libcef_dll_wrapper
+    #libcef_dll_wrapper
     ${CEF_STANDARD_LIBS}
   )
 
