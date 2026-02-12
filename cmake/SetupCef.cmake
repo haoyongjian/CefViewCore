@@ -125,7 +125,7 @@ find_package(CEF REQUIRED)
 # Add libcef dll wrapper
 #add_subdirectory(${CEF_LIBCEF_DLL_WRAPPER_PATH} libcef_dll_wrapper)
 
-PRINT_CEF_CONFIG()
+#PRINT_CEF_CONFIG()
 
 # #################################################################################
 # Stage 4. Read CEF version and generated CefVersion.h
