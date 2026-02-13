@@ -51,7 +51,7 @@ target_include_directories(CefViewCore
 #add_library(libcef_lib ${CEF_LIBTYPE} IMPORTED GLOBAL)
 if(NOT TARGET libcef_lib)
     # Manually specify libcef.so path for LoongArch
-    set(LIBCEF_SO_PATH "/home/hyj/cef-wps-loongarch64/libcef.so")
+    set(LIBCEF_SO_PATH "/home/hyj/cef-loongarch64/libcef.so")
 
     if(NOT EXISTS "${LIBCEF_SO_PATH}")
         message(FATAL_ERROR "libcef.so not found at ${LIBCEF_SO_PATH}")
@@ -62,7 +62,7 @@ if(NOT TARGET libcef_lib)
         IMPORTED_LOCATION "${LIBCEF_SO_PATH}"
 	IMPORTED_LOCATION_RELEASE "${LIBCEF_SO_PATH}"   # Release
         IMPORTED_LOCATION_DEBUG "${LIBCEF_SO_PATH}"     # Debug（即使相同）
-        INTERFACE_INCLUDE_DIRECTORIES "/home/hyj/cef-wps-loongarch64/include"
+        INTERFACE_INCLUDE_DIRECTORIES "/home/hyj/cef-loongarch64/include"
         INTERFACE_LINK_LIBRARIES ""
     )
 endif()
