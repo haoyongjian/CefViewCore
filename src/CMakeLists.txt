@@ -466,30 +466,7 @@ if(CMAKE_SYSTEM_PROCESSOR MATCHES "loongarch|loongarch64")
 
     # Force include remap header
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -include CefSymbolRemap.h")
-
-    # Redefine CEF API calls
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} 
-        -DCefV8Value::CreateNull=CEF_CALL(void\\*,\ \"_ZN10CefV8Value13CreateNullEv\") 
-        -DCefV8Value::CreateUndefined=CEF_CALL(void\\*,\ \"_ZN10CefV8Value15CreateUndefinedEv\") 
-        -DCefV8Value::CreateBool=CEF_CALL(void\\*,\ \"_ZN10CefV8Value13CreateBoolEb\", v) 
-        -DCefV8Value::CreateInt=CEF_CALL(void\\*,\ \"_ZN10CefV8Value12CreateIntEi\", v) 
-        -DCefV8Value::CreateDouble=CEF_CALL(void\\*,\ \"_ZN10CefV8Value14CreateDoubleEd\", v) 
-        -DCefV8Value::CreateString=CEF_CALL(void\\*,\ \"_ZN10CefV8Value13CreateStringERK13CefStringBaseI20CefStringTraitsUTF16E\", str) 
-        -DCefV8Value::CreateArray=CEF_CALL(void\\*,\ \"_ZN10CefV8Value13CreateArrayEi\", len) 
-        -DCefV8Value::CreateObject=CEF_CALL(void\\*,\ \"_ZN10CefV8Value13CreateObjectE13scoped_refptrI13CefV8AccessorES3_I20CefV8InterceptorE\", a, b) 
-        -DCefV8Value::CreateFunction=CEF_CALL(void\\*,\ \"_ZN10CefV8Value13CreateFunctionERK13CefStringBaseI20CefStringTraitsUTF16E13scoped_refptrI13CefV8HandlerE\", name, handler) 
-        -DCefProcessMessage::Create=CEF_CALL(void\\*,\ \"_ZN16CefProcessMessage13CreateERK13CefStringBaseI20CefStringTraitsUTF16E\", name) 
-        -DCefCommandLine::CreateCommandLine=CEF_CALL(void\\*,\ \"_ZN14CefCommandLine17CreateCommandLineEv\") 
-        -DCefValue::Create=CEF_CALL(void\\*,\ \"_ZN9CefValue6CreateEv\") 
-        -DCefListValue::Create=CEF_CALL(void\\*,\ \"_ZN12CefListValue6CreateEv\") 
-        -DCefDictionaryValue::Create=CEF_CALL(void\\*,\ \"_ZN18CefDictionaryValue6CreateEv\") 
-        -DCefMessageRouterConfig::CefMessageRouterConfig=CEF_CALL(void,\ \"_ZN21CefMessageRouterConfigC1Ev\", this) 
-        -DCefMessageRouterRendererSide::Create=CEF_CALL(void\\*,\ \"_ZN33CefMessageRouterRendererSide6CreateERK21CefMessageRouterConfig\", config) 
-        -DCefV8Context::GetCurrentContext=CEF_CALL(void\\*,\ \"_ZN13CefV8Context18GetCurrentContextEv\") 
-        -DCefExecuteProcess=CEF_CALL(int,\ \"_ZN11CefExecuteProcessERK11CefMainArgs13scoped_refptrI5CefAppEPv\", args, app, something) 
-        -Dbase::cef_subtle::RefCountedThreadSafeBase::Release=CEF_CALL(int,\ \"_ZNK4base11cef_subtle25RefCountedThreadSafeBase7ReleaseEv\", this) 
-        -Dbase::cef_subtle::RefCountedThreadSafeBase::AddRef=CEF_CALL(void,\ \"_ZNK4base11cef_subtle25RefCountedThreadSafeBase6AddRefEv\", this) 
-    ")
+	
 endif()
 
 # add alias for helper process target
