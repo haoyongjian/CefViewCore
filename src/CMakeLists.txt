@@ -172,6 +172,7 @@ file(GLOB_RECURSE CefViewWing_SRC_FILES
   "${CMAKE_CURRENT_SOURCE_DIR}/CefWing/App/*.cpp"
   "${CMAKE_CURRENT_SOURCE_DIR}/CefWing/Bridge/*.h"
   "${CMAKE_CURRENT_SOURCE_DIR}/CefWing/Bridge/*.cpp"
+  "${CMAKE_CURRENT_SOURCE_DIR}/CefWing/Adapter/*.h"
 )
 source_group(
   TREE "${CMAKE_CURRENT_SOURCE_DIR}/CefWing"
