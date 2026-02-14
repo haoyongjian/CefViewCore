@@ -180,6 +180,7 @@ set(CMAKE_SUPPRESS_REGENERATION TRUE)
 set(CefViewCore_INCLUDE_PATH
   "${CEF_INCLUDE_PATH}"
   "${CMAKE_CURRENT_SOURCE_DIR}/include"
+  "${CMAKE_CURRENT_SOURCE_DIR}/src/CefWing/Adapter"
 )
 
 add_subdirectory(src)
