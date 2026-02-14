@@ -48,7 +48,7 @@ CefViewWingMain(int argc, char* argv[])
 
 // Program entry point function.
 int
-main(int argc, const char* argv[])
+main(int argc, char* argv[])
 {
   return CefViewWingMain(argc, const_cast<char**>(argv));
 }
